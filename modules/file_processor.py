@@ -11,7 +11,8 @@ class FileProcessor:
         if not filename:
             filename = file.filename
         filepath = os.path.join(self.upload_dir, filename)
-        file.save(filepath)
+        with open(filepath, 'wb') as f:
+            f.write(file.read())
         return filepath
 
     def read_file(self, filepath):

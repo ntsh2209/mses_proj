@@ -2,3 +2,6 @@ flask
 flask-swagger-ui
 pyyaml
 pandas
+flask-restx
+gevent
+werkzeug

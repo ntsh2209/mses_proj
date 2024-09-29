@@ -1,9 +1,9 @@
 {
     "swagger": "2.0",
     "info": {
-      "description": "API for CSV Processing and Workflow Execution",
-      "version": "1.0.0",
-      "title": "Workflow API"
+      "title": "File Processing and Workflow API",
+      "description": "API for processing files, executing workflows, and listing schemas.",
+      "version": "1.0.0"
     },
     "host": "localhost:5000",
     "basePath": "/",
@@ -11,23 +11,23 @@
     "paths": {
       "/process_file": {
         "post": {
-          "summary": "Process CSV/TXT File",
-          "description": "Process a file with a selected schema and generate a new CSV file",
+          "summary": "Process a file",
+          "description": "Upload a CSV/TXT file and apply a selected schema to it.",
           "consumes": ["multipart/form-data"],
           "parameters": [
             {
               "name": "file",
               "in": "formData",
-              "description": "File to be processed (CSV or TXT)",
-              "required": true,
-              "type": "file"
+              "type": "file",
+              "description": "The file to be processed.",
+              "required": true
             },
             {
               "name": "schema",
               "in": "formData",
-              "description": "YAML schema for renaming columns and changing data types",
-              "required": true,
-              "type": "file"
+              "type": "string",
+              "description": "The schema to apply to the file.",
+              "required": true
             }
           ],
           "responses": {
@@ -39,28 +39,39 @@
       },
       "/run_workflow": {
         "post": {
-          "summary": "Run Workflow",
-          "description": "Execute a workflow defined in a YAML file",
+          "summary": "Run a workflow",
+          "description": "Execute a workflow on uploaded YAML data.",
           "consumes": ["multipart/form-data"],
           "parameters": [
             {
-              "name": "workflow",
-              "in": "formData",
-              "description": "YAML file containing the workflow",
-              "required": true,
-              "type": "file"
-            },
-            {
               "name": "data",
               "in": "formData",
-              "description": "YAML file containing the data",
-              "required": true,
-              "type": "file"
+              "type": "file",
+              "description": "The YAML data file to run the workflow on.",
+              "required": true
+            },
+            {
+              "name": "workflow",
+              "in": "formData",
+              "type": "string",
+              "description": "The name of the workflow to execute.",
+              "required": true
             }
           ],
           "responses": {
             "200": {
               "description": "Workflow executed successfully"
+            }
+          }
+        }
+      },
+      "/list_schemas": {
+        "get": {
+          "summary": "List all schemas",
+          "description": "Retrieve a list of all available schemas.",
+          "responses": {
+            "200": {
+              "description": "Schemas listed successfully"
             }
           }
         }
