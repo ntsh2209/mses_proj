@@ -1,0 +1,7 @@
+steps:
+  - operation: 'multiply'
+    column: 'age'
+    value: 2
+  - operation: 'add'
+    column: 'age'
+    value: 5

@@ -1,0 +1,70 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "description": "API for CSV Processing and Workflow Execution",
+      "version": "1.0.0",
+      "title": "Workflow API"
+    },
+    "host": "localhost:5000",
+    "basePath": "/",
+    "schemes": ["http"],
+    "paths": {
+      "/process_file": {
+        "post": {
+          "summary": "Process CSV/TXT File",
+          "description": "Process a file with a selected schema and generate a new CSV file",
+          "consumes": ["multipart/form-data"],
+          "parameters": [
+            {
+              "name": "file",
+              "in": "formData",
+              "description": "File to be processed (CSV or TXT)",
+              "required": true,
+              "type": "file"
+            },
+            {
+              "name": "schema",
+              "in": "formData",
+              "description": "YAML schema for renaming columns and changing data types",
+              "required": true,
+              "type": "file"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "File processed successfully"
+            }
+          }
+        }
+      },
+      "/run_workflow": {
+        "post": {
+          "summary": "Run Workflow",
+          "description": "Execute a workflow defined in a YAML file",
+          "consumes": ["multipart/form-data"],
+          "parameters": [
+            {
+              "name": "workflow",
+              "in": "formData",
+              "description": "YAML file containing the workflow",
+              "required": true,
+              "type": "file"
+            },
+            {
+              "name": "data",
+              "in": "formData",
+              "description": "YAML file containing the data",
+              "required": true,
+              "type": "file"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Workflow executed successfully"
+            }
+          }
+        }
+      }
+    }
+  }
+  

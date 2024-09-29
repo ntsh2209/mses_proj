@@ -1,0 +1,7 @@
+columns:
+  - old_name: 'age'
+    new_name: 'Age'
+    dtype: 'int'
+  - old_name: 'name'
+    new_name: 'Full Name'
+    dtype: 'str'
