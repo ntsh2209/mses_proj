@@ -1,0 +1,12 @@
+{
+    "null_columns": ["age", "email"],
+    "sum_constraints": { 
+        "salary": 100000,
+        "bonus": 5000
+    },
+    "multiplication_constraints": [["col1", "col2", 500]],
+    "range_constraints": { "age": [18, 60] },
+    "unique_constraints": ["id"],
+    "regex_constraints": { "email": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$" },
+    "data_type_constraints": { "age": "numeric", "name": "string" }
+}
